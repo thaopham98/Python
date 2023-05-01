@@ -10,10 +10,16 @@ class Solution:
         #             return [i,j]
 
         """Solution 2: Using Hash Table dict()"""
-        hashTable = {} # Creating an empty dict
-        
-        
+        table = {} #creating empty hash table
+        #Looping through the array 
+        for i in range(len(nums)): 
+            x = target - nums[i] 
+            print(f'x: {x}')
+            if x in nums:
+                return[i,nums.index(x)]
+            else:
+                table[nums[i]] = i
 
-
+list = [2,7,11,15]
 test1 = Solution()
-test1.twoSum(12, 31)
+print(test1.twoSum(list, 9))
