@@ -13,7 +13,7 @@ def permutation(a, left_letter, right_letter): #parameters: list, position, posi
 	else:
 		for j in range(left_letter, right_letter):
 			a[left_letter], a[j] = a[j], a[left_letter] #swapping 
-			permutation(a, left_letter + 1, right_letter) 
+			permutation(a, left_letter + 1, right_letter) #recursion
 			a[left_letter], a[j] = a[j], a[left_letter] #swapping 
 
 permutation(list(string), 0, len(string))

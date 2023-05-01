@@ -51,9 +51,11 @@ class Solution:
         """
         return stack == []
         print(f'\tStack: {stack}')
+        
 test_cases = ['()', '', '(}', '(){}[]', '{[()]}', ')]}', ']', 'asdfhkasd', '234', '((' ]
 """TRUE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE"""
+
 test1=Solution()
 for case in test_cases:
-    print(f'{case}: {test1.isValid(case)}\n')
-    print(f'{test1.isValid(case)}\n')
+    # print(f'{case}: {test1.isValid(case)}\n')
+    print(f'{test1.isValid(case)}\n', end="")
