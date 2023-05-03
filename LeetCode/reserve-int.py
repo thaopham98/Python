@@ -38,16 +38,16 @@ class Solution:
         
         rev_num = 0
         positive = x
-        if x < 0:
-            positive *= -1
+
+        if x < 0: # if x is negative,
+            positive *= -1 # making it positive without changing x.
 
         while positive > 0:
             rev_num = rev_num*10 + positive%10
             positive = positive // 10
 
-        if x < 0:
-            rev_num *= -1
-            
+        if x < 0: #if x is negative,
+            rev_num *= -1 # after reversing change the number back to negative.
 
         if (pow(2,31)-1 <= rev_num) or (pow(-2,31) >= rev_num):
             return 0
