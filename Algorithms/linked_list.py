@@ -46,16 +46,7 @@ class LinkedList:
         # After the while loop completes, current_node will be pointing to the last node in the list
         # So, we can append the new node to the end of the list
 
-    '''Adding a new node to the beginning of the list'''
-    def prepend(self, data):
-        new_node = Node(data) # Creatint a new node
-        # print(f'Creating a new node {new_node.data}')
-        """ 
-        The new node must pointing to the current head first.
-        Then, can safely set the new node as the new head.
-        """
-        new_node.next = self.head # Setting the new node points to the current head
-        self.head = new_node # Setting the new node as the new head
+
 
     '''Displaying the contents of the list'''
     def printing(self):
