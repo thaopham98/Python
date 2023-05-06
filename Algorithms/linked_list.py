@@ -46,7 +46,21 @@ class LinkedList:
         # After the while loop completes, current_node will be pointing to the last node in the list
         # So, we can append the new node to the end of the list
 
+    '''Delete the node at the specified position'''
+    def delete(self, pos):
+        """
+        Know which node to delete
 
+        Check if we're on that node or not
+        if we're not on that node,
+            move to the node
+            move to the node points to the wanted node
+        
+        Before deleting the node
+        Must creating a connection btw the node before and after
+        
+        """
+        pass
 
     '''Displaying the contents of the list'''
     def printing(self):
