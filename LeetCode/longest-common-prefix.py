@@ -7,32 +7,26 @@ If there is no common prefix, return an empty string "".
 
 from typing import List
 class Solution:
+
+    def common_prefix(self,left, right):
+        lcp = ''
+        for i in range(min(len(left), len(right))):
+            if left[i] != right[i]:
+                return lcp
+            lcp += left[i]
+        return lcp
+        
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        if len(strs) == 0 or len(strs) == 1:
+        if len(strs) == 0: 
             return ""
-        
-        # hash = {}
-        # stack = []
-        # Looping through the elements in the array
-        # for e in range(len(strs[0])): # Looping through the 1st element in the array
-        #     # print(e)
-        #     print(strs[0][e])
-        #     hash.append(e) # Appending to the hash table 
-        """
-        Appending the letters of the 1st word to hash table.
-
-        Checking which letters in the next word are in the hash table more or not
-
-        If yes, then append it to the a stack.
-
-        If no, then pop it out of the stack.
-        """
-        
-
-        
-
+        elif len(strs) == 1:
+            return strs[0]
+        else:
+            mid = len(strs) // 2
+            left = self.longestCommonPrefix(strs[:mid])
+            right = self.longestCommonPrefix(strs[mid:])
+            return self.common_prefix(left,right)
 
 strs = ["flower","flow","flight"]
-# strs = [] #empty list
 test1 = Solution()
-test1.longestCommonPrefix(strs)
+print(test1.longestCommonPrefix(strs))
