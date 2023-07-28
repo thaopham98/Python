@@ -8,14 +8,21 @@ If there is no common prefix, return an empty string "".
 from typing import List
 class Solution:
 
-    def common_prefix(self,left, right):
-        lcp = ''
+    ''' 
+    Finding the Longest Common Prefix
+    by comparing the characters
+    '''
+    def common_prefix(left, right): 
+        lcp = '' # An empty container that stores the longest common prefix
         for i in range(min(len(left), len(right))):
-            if left[i] != right[i]:
-                return lcp
-            lcp += left[i]
-        return lcp
+            if left[i] != right[i]: # If the characters are different, 
+                return lcp # returning the container, the Longest Common Prefix.
+            lcp += left[i] # Adding characters to the empty container
+        return lcp 
         
+    '''
+    Diving the strings using Divide and Conquer Algorithm
+    ''' 
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if len(strs) == 0: 
             return ""
@@ -25,7 +32,7 @@ class Solution:
             mid = len(strs) // 2
             left = self.longestCommonPrefix(strs[:mid])
             right = self.longestCommonPrefix(strs[mid:])
-            return self.common_prefix(left,right)
+            return Solution.common_prefix(left,right)
 
 strs = ["flower","flow","flight"]
 test1 = Solution()
