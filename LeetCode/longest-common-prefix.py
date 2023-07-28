@@ -2,7 +2,6 @@
 Write a function to find the longest common prefix 
 string amongst an array of strings.
 If there is no common prefix, return an empty string "".
-
 """
 
 from typing import List
@@ -28,11 +27,11 @@ class Solution:
             return ""
         elif len(strs) == 1:
             return strs[0]
-        else:
-            mid = len(strs) // 2
-            left = self.longestCommonPrefix(strs[:mid])
-            right = self.longestCommonPrefix(strs[mid:])
-            return Solution.common_prefix(left,right)
+        
+        mid = len(strs) // 2
+        left = self.longestCommonPrefix(strs[:mid])
+        right = self.longestCommonPrefix(strs[mid:])
+        return Solution.common_prefix(left,right)
 
 strs = ["flower","flow","flight"]
 test1 = Solution()
