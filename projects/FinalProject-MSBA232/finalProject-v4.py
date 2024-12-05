@@ -263,7 +263,7 @@ def main():
                 continue
         
         except Exception as outOfBound:
-            print(f'The option you entered, {select}, is not on the list.')
+            print(f'The option you entered, {select}, is {outOfBound}.')
     
 if __name__ == "__main__":
     main()
