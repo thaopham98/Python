@@ -31,23 +31,6 @@ def display(*args, show="both"):
             status = "Sold Out" if details["quantity"] == 0 else f"${details["price"]:.2f}"
             print(f'{idx}. {item}: {status}')
 
-def validateItemSelection(item_keys):
-    """
-    Validates that the user's input is within the valid range of item numbers.
-    :param item_keys: A list of item keys to validate against.
-    :return: The selected item's index (0-based).
-    """
-    while True:
-        try:
-            itemN = int(input(f"Enter the item number (1 to {len(item_keys)}): "))
-            if 1 <= itemN <= len(item_keys):
-                return itemN - 1  # Convert to 0-based index
-            else:
-                print(f"Error: Item number {itemN} is out of bounds. Please try again.")
-        except ValueError:
-            print("Error: Please enter a valid integer.")
-
-
 
 def addItem(menu_inventory):
     while True:
@@ -122,23 +105,18 @@ def editItem(menu_inventory):
     
     # itemN = int(input('Enter the item number you want to edit: ')) # selecting the item to edit
 
-    # while True:  # Loop to validate the item number input
-    #     try:
-    #         itemN = int(input('\nEnter the item number you want to edit: '))  # Selecting the item to edit
-    #         if itemN < 1 or itemN > len(menu_inventory):
-    #             print(f"Error: Item number {itemN} is out of bounds. Please select a valid number between 1 and {len(menu_inventory)}.")
-    #         else:
-    #             break  # Exit loop when input is valid
-    #     except ValueError:
-    #         print("Error: Please enter a valid integer.")
+    while True:  # Loop to validate the item number input
+        try:
+            itemN = int(input('\nEnter the item number you want to edit: '))  # Selecting the item to edit
+            if itemN < 1 or itemN > len(menu_inventory):
+                print(f"Error: Item number {itemN} is out of bounds. Please select a valid number between 1 and {len(menu_inventory)}.")
+            else:
+                break  # Exit loop when input is valid
+        except ValueError:
+            print("Error: Please enter a valid integer.")
 
     # """ Get the key of the selected item """
-    # item_to_edit = list(menu_inventory.keys())[itemN - 1]
-
-    item_keys = list(menu_inventory.keys())
-    item_index = validateItemSelection(item_keys)
-    item_to_edit = item_keys[item_index]
-
+    item_to_edit = list(menu_inventory.keys())[itemN - 1]
 
     print(f"You selected: {item_to_edit}")
 
@@ -147,6 +125,7 @@ def editItem(menu_inventory):
     print("n: Edit Name")
     print("p: Edit Price")
     print("q: Edit Quantity")
+    print("To stop the edit, press other keys")
     choice = input("Enter your option (n/p/q): ").strip().lower()
 
     if choice == 'n':
@@ -163,6 +142,7 @@ def editItem(menu_inventory):
         while True:
             try:
                 new_price = float(input(f"Enter a new price for '{item_to_edit}': "))
+
                 if new_price < 0:
                     print("Error: Price cannot be negative. Please try again.")
                 else:
@@ -176,6 +156,7 @@ def editItem(menu_inventory):
         while True:
             try:
                 new_quantity = int(input(f"Enter a new quantity for '{item_to_edit}': "))
+
                 if new_quantity < 0:
                     print("Error: Quantity cannot be negative. Please try again.")
                 else:
@@ -185,23 +166,24 @@ def editItem(menu_inventory):
             except ValueError:
                 print("Error: Please enter a valid integer value for the quantity.")
     else:
-        print("Error: Invalid option selected. No changes made.")
+        print("Stop editting and back to options...")
 
     # Display updated menu and inventory
     display(menu_inventory, show="both")
 
 
 def totalAmountItem(menu_inventory):
-    # totalPItem = {} # Total Per Item
+    totalPItem = {} # Total Per Item
     print(f'Total Amount of Each Item: ')
     for item, details in menu_inventory.items():
 
         """ Saving the results in totalPItem """
-        # totalPItem[item] = details["price"] * details["quantity"]
-        # print(f'{item}: ${totalPItem[item]}')
+        totalPItem[item] = details["price"] * details["quantity"]
+        print(f'{item}: ${totalPItem[item]}')
         
         """ NOT Saving the results in totalPItem """
-        print(f'{item}: ${details["price"] * details["quantity"]}')
+        # print(f'{item}: ${details["price"] * details["quantity"]}')
+    
 
 def numItem(inventory):
     count = 0
