@@ -201,22 +201,6 @@ totalInventory(inventory)
 #         print(f'{k}: ${v}')
 # totalAmountItem(menu, inventory)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def main():
     options(o)
     try: 
