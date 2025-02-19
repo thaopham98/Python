@@ -1,8 +1,8 @@
 def shift_alphabet(string):
-    '''Loop, convert to ASCII, increase by 1, convert to character, store, join'''
+    ''' Loop, convert to ASCII, increase by 1, convert to character, store, join '''
     new = [] # empty container
     for char in string:
-        '''Converting each characters to ASCII code, using ord(), and increasing by 1'''
+        ''' Converting each characters to ASCII code, using ord(), and increasing by 1 '''
         to_ascii = ord(char)+1
 
         '''
