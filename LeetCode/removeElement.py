@@ -14,8 +14,7 @@ Return `k`.
 from typing import List
 
 def removeElement(nums: List[int], val: int) -> int:
-    if len(nums) < 1 :
-        return len(nums)
+    if len(nums) < 1: return len(nums)
 
     """
     Since it's an in-place type of problem -> 2-pointer method:
@@ -23,25 +22,24 @@ def removeElement(nums: List[int], val: int) -> int:
     - `i` pointer iterates through the array
     """
     write_index = 0 # start position at 0 
-    for i in range(0, len(nums)):
+    for i in range(len(nums)):
         """
         Move the element to the front, if ums[write_index] != val.
         A.K.A. reassign position
         """
-        # print(f'{nums[i]}')
+        
         if nums[i] != val:
-            print(f'{nums[write_index]} != {val}') #display value
+            # print(f'{nums[write_index]} != {val}') #display value
             nums[write_index] = nums[i] # move nums[i] to nums[write_index]
             # print(f'nums[write_index] = {nums[write_index]}')
             write_index += 1
     # print(f'nums: {nums}')
     # print(f'write_index: {write_index}')
-    k = write_index
 
-    return k
+    return write_index
 
 # k = removeElement([3,2,2,3], 3)
-# k = removeElement([0,1,2,2,3,0,4,2], 2)
+k = removeElement([0,1,2,2,3,0,4,2], 2)
 # k = removeElement([4,3],3)
-k = removeElement([1],1)
-# print(k)
+# k = removeElement([1],1)
+print(k)
