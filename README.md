@@ -2,6 +2,9 @@
 This is where I store in python codes, including OOP practices, LeetCode solutions and personal projects.
 
 I'm adding and upgrading my codes continuously for better approaches. 
+## Download and Install Python and related libaries
+- [Python Download](https://www.python.org/downloads/)
+
 
 ## [LeetCode](https://github.com/thaopham98/Python/tree/main/LeetCode)
 Contains my solutions for LeetCode problems.
