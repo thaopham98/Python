@@ -9,17 +9,34 @@ class Solution:
         #             # print(f'i: {i}, j: {j}')
         #             return [i,j]
 
+
         """Solution 2: Using Hash Table dict()"""
-        table = {} #creating empty hash table
-        #Looping through the array 
-        for i in range(len(nums)): 
-            x = target - nums[i] 
-            print(f'x: {x}')
-            if x in nums:
-                return[i,nums.index(x)]
-            else:
-                table[nums[i]] = i
+        # table = {} #creating empty hash table
+        # # #Looping through the array 
+        # for num in range(len(nums)):
+        #     # diff = target - nums[num]
+
+        #     if target - nums[num] in table:
+        #         return [table[target - nums[num]], num]
+        #     table[nums[num]] = num
+
+        # return []
+
+
+        """Solution3: also use Hash Table"""
+        table = {}
+
+        for num in range(len(nums)):
+            diff = target - nums[num]
+
+            if diff in table:
+                return [table[diff], num]
+
+            table[nums[num]] = num
 
 list = [2,7,11,15]
 test1 = Solution()
 print(test1.twoSum(list, 9))
+
+test2 = Solution()
+print(test2.twoSum([5,5], 10))
