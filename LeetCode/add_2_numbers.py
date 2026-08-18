@@ -71,18 +71,22 @@ class Solution3:
             dummy = ListNode(0) # []
             current = dummy
             carry = 0 
-            while l1 or l2:
+            while l1 or l2 or carry:
 
-                val1 = l1.val if l1 else 0
+                val1 = l1.val if l1 else 0 # if l1 is true == 
                 val2 = l2.val if l2 else 0 
 
                 total = val1 + val2 + carry
-                carry = total//10
-                remain = total%10
+                carry = total // 10
 
-                newNode =  ListNode(remain) # create a new node from the resulst, this is like newNode.val
-                current.next = newNode # add the new node as the next node. dummmy(0)->newNode(remain)
-                current = newNode # move the current pointer to the new node
+                # remain = total%10
+                # newNode =  ListNode(remain) # create a new node from the resulst, this is like newNode.val
+                # current.next = newNode # add the new node as the next node. dummmy(0)->newNode(remain)
+                # current = newNode # move the current pointer to the new node
+
+                # another way to write and shorten the code:
+                current.next = ListNode(total % 10) # create a new node and assign its .val that the same time
+                current = current.next # move the current pointer to the new node
 
                 if l1:
                     l1 = l1.next
@@ -90,10 +94,51 @@ class Solution3:
                 if l2: 
                     l2 = l2.next
                     
-            if carry:
-                newNode =  ListNode(carry) # create a new node from the resulst, this is like newNode.val
-                # current.next = newNode # add the new node as the next node. dummmy(0)->newNode(carry)
+            # if carry: ## we can comment this out and add it as a condition for the while loop
+            #     newNode =  ListNode(carry) # create a new node from the resulst, this is like newNode.val
+            #     current.next = newNode # add the new node as the next node. dummmy(0)->newNode(carry)
+
+            return dummy.next
+
+class Solution4:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+
+            # rare cases, return immediately but might increase both runtime and memory
+            # if l1 is None:
+            #     return l2
+            # if l2 is None:
+            #     return l1 
+
+            
+            dummy = ListNode(0) # []
+            current = dummy
+            carry = 0 
+            while l1 or l2 or carry:
+
+                val1 = l1.val if l1 else 0 # if l1 is true == 
+                val2 = l2.val if l2 else 0 
+
+                total = val1 + val2 + carry
+                carry = total // 10
+
+                # remain = total%10
+                # newNode =  ListNode(remain) # create a new node from the resulst, this is like newNode.val
+                # current.next = newNode # add the new node as the next node. dummmy(0)->newNode(remain)
                 # current = newNode # move the current pointer to the new node
+
+                # another way to write and shorten the code:
+                current.next = ListNode(total % 10) # create a new node and assign its .val that the same time
+                current = current.next # move the current pointer to the new node
+
+                if l1:
+                    l1 = l1.next
+
+                if l2: 
+                    l2 = l2.next
+                    
+            # if carry: ## we can comment this out and add it as a condition for the while loop
+            #     newNode =  ListNode(carry) # create a new node from the resulst, this is like newNode.val
+            #     current.next = newNode # add the new node as the next node. dummmy(0)->newNode(carry)
 
             return dummy.next
 
@@ -129,3 +174,14 @@ while current:
     current = current.next
 
 print(f"ANSWER 3: {result}")
+
+sol4 = Solution4()
+answer4 = sol4.addTwoNumbers(l4, l1)
+result = []
+current = answer4
+
+while current:
+    result.append(current.val)
+    current = current.next
+
+print(f"ANSWER 4: {result}")
