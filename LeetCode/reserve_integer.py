@@ -53,9 +53,56 @@ class Solution:
             return 0
         
         return rev_num
+    def reverse1(self, x: int) -> int:
+        rev_num = 0
+        positive = x
+        if x < 0:
+            positive *= -1
+
+        while positive > 0:
+            rev_num = rev_num*10 + positive%10
+            positive = positive // 10
+
+        if x < 0:
+            rev_num *= -1
+
+
+        if (pow(2,31)-1 <= rev_num) or (pow(-2,31) >= rev_num):
+            return 0
+        
+        return rev_num
+
+    def reverse2(self, x: int) -> int:
+        negative = x < 0
+        x = abs(x)
+        
+        result = 0
+        while x != 0:
+            digit = x % 10
+            # print(f"digit: {digit}")
+
+            x = x // 10
+            # print(f"x: {x}")
+
+            result = result*10+digit
+            # print(f"result: {result}")
+        
+        if negative:
+            result = -result
+        
+        if not (-2147483648 <= result <= 2147483647):
+            return 0
+        
+        return result
+
     
+
 test1 = Solution()
 array = [-12, 1234, 1534236469, -2147483412, 0 ,-2147483648]
 for x in array :
     result = test1.reverse(x)
     print(result)
+
+print(test1.reverse1(-1653))
+print(test1.reverse1(123))
+print(test1.reverse1(1534236469))
