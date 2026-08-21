@@ -11,11 +11,12 @@ class Solution:
         l = 1
         h = n
 
-        while l <= h:
+        # when l is smaller or equal to h
+        while l <= h: 
             m = l + (h - l)//2 # floor division
 
             if m == False: # good version
-                l = m + 1
+                l = m + 1 # increase l 
             else: # bad version
                 #checking the number before m
                 if m-1 == False: 
